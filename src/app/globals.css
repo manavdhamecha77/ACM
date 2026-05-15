@@ -118,8 +118,9 @@ section{padding:8rem 3rem;position:relative}
 .pillar-n{font-size:.7rem;letter-spacing:.14em;color:var(--red);text-transform:uppercase;margin-bottom:.3rem}
 .pillar-t{font-size:.95rem;font-weight:500;color:var(--bg)}
 .manifesto-bignum{font-size:clamp(6rem,14vw,12rem);font-weight:800;color:transparent;-webkit-text-stroke:1px #333;line-height:1;letter-spacing:-.04em}
-.manifesto-stat{margin-top:2rem;display:flex;flex-direction:column;gap:1.5rem}
-.stat{border-top:1px solid #333;padding-top:1rem}
+.manifesto-stat{margin-top:2rem;display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.stat{border:1px solid #333;padding:1.5rem;transition:all .3s var(--ease);cursor:default}
+.stat:hover{border-color:var(--red);background:rgba(255,255,255,.05)}
 .stat-val{font-size:2.5rem;font-weight:700;color:var(--bg);letter-spacing:-.03em}
 .stat-val span{color:var(--red)}
 .stat-label{font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:#666;margin-top:.2rem}
@@ -345,7 +346,11 @@ footer{padding:4rem 3rem;display:grid;grid-template-columns:1fr auto 1fr;align-i
   .faq-header-container { order: -1; align-items: flex-start !important; text-align: left !important; }
   .faq-title { position: static !important; text-align: left !important; font-size: 3.5rem; }
   .cta-headline { font-size: 3.5rem; }
-  .manifesto-stat{ margin-bottom: 0rem; }
+  .stat-val { font-size: 1.8rem; }
+  .stat-label { font-size: 0.6rem; }
+  .stat { padding: 1rem 0.5rem; text-align: center; }
+  .stat:active { border-color: var(--red); background: rgba(255, 43, 43, 0.1); }
+  .manifesto-stat{ margin-bottom: 3rem; }
   .manifesto-pillars{ margin-top: 1rem; padding-top: 0rem; }
 
   .activities{grid-template-columns:1fr}
