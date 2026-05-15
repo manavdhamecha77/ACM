@@ -21,7 +21,7 @@ export default function HeroSection() {
         ACM
       </div>
       <div className="hero-year">2026</div>
-      <div className="hero-index reveal stagger-1">NIT Surat / Gujarat, India</div>
+      {/* <div className="hero-index reveal stagger-1">NIT Surat / Gujarat, India</div> */}
       <p className="hero-acm reveal stagger-2">Association for Computing Machinery — SVNIT Student Chapter</p>
       <h1 className="hero-headline reveal stagger-3">
         Think.
