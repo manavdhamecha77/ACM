@@ -7,7 +7,19 @@ export default function HeroSection() {
     <section id="hero">
       <div className="hero-grid"></div>
       
-      <div className="manifesto-bignum" style={{ position: "absolute", bottom: "18rem", left: "50%", transform: "translateX(-50%)", zIndex: 0 }}>ACM</div>
+      <div 
+        className="manifesto-bignum" 
+        style={{ 
+          position: "absolute", 
+          bottom: "22rem", 
+          left: "50%", 
+          transform: "translateX(-50%)", 
+          zIndex: 0,
+          WebkitTextStroke: "1.2px rgba(177, 177, 177, 0.41)"
+        }}
+      >
+        ACM
+      </div>
       <div className="hero-year">2026</div>
       <div className="hero-index reveal stagger-1">NIT Surat / Gujarat, India</div>
       <p className="hero-acm reveal stagger-2">Association for Computing Machinery — SVNIT Student Chapter</p>
