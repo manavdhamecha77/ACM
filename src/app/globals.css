@@ -209,7 +209,7 @@ section{padding:8rem 3rem;position:relative}
 
 #faq{border-bottom:1px solid var(--border);background:#f0ede7}
 .faq-inner{display:grid;grid-template-columns:2fr 1fr;gap:6rem;align-items:start}
-.faq-title{font-size:var(--fs-xl);font-weight:700;line-height:1.1;letter-spacing:-.03em;text-transform:uppercase;position:sticky;top:8rem;text-align:right}
+.faq-title{font-size:6.5vw;font-weight:700;line-height:1.1;letter-spacing:-.03em;text-transform:uppercase;position:sticky;top:8rem;text-align:right}
 .faq-title span{color:var(--red)}
 .faq-item{border-top:1px solid var(--border)}
 .faq-q{width:100%;text-align:left;background:none;border:none;cursor:pointer;padding:1.8rem 0;display:flex;justify-content:space-between;align-items:center;font-size:1rem;font-weight:500;color:var(--ink);gap:1rem}
@@ -221,9 +221,9 @@ section{padding:8rem 3rem;position:relative}
 #cta{min-height:80svh;display:flex;align-items:center;border-bottom:1px solid var(--border);overflow:hidden;position:relative}
 .cta-bg-text{position:absolute;font-size:clamp(5rem,18vw,15rem);font-weight:800;color:transparent;-webkit-text-stroke:1px var(--border);letter-spacing:-.05em;white-space:nowrap;top:50%;transform:translateY(-50%);right:-5%;pointer-events:none}
 .cta-inner{position:relative;z-index:1}
-.cta-headline{font-size:var(--fs-xl);font-weight:700;line-height:1;letter-spacing:-.03em;text-transform:uppercase;max-width:700px;margin-bottom:3rem}
+.cta-headline{font-size:6.5vw;font-weight:700;line-height:1;letter-spacing:-.03em;text-transform:uppercase;max-width:1000px;margin-bottom:3rem}
 .cta-headline span{color:var(--red)}
-.cta-sub{font-size:.95rem;color:var(--mid);max-width:400px;line-height:1.7;margin-bottom:3rem}
+.cta-sub{font-size:1.5rem;color:var(--mid);max-width:600px;line-height:1.7;margin-bottom:3rem}
 .cta-btn{display:inline-flex;align-items:center;gap:1rem;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;padding:1rem 2rem;background:var(--ink);color:var(--bg);text-decoration:none;border:2px solid var(--ink);transition:background .3s,color .3s;position:relative;overflow:hidden;cursor: pointer;}
 .cta-btn::before{content:'';position:absolute;inset:0;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease);z-index:0}
 .cta-btn:hover::before{transform:scaleX(1)}

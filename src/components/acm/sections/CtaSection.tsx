@@ -6,10 +6,9 @@ export default function CtaSection() {
         <div className="cta-inner">
           <span className="label reveal">Ready?</span>
           <h2 className="cta-headline reveal stagger-2">
-            Build with people
+            Build with <span>people</span>
             <br />
-            shaping the <span>future</span>
-            <br />
+            shaping the <span>future </span>
             of technology.
           </h2>
           <p className="cta-sub reveal stagger-3">
