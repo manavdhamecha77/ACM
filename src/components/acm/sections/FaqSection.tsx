@@ -10,16 +10,6 @@ export default function FaqSection({ openIndex, onToggle }: FaqSectionProps) {
     <section id="faq">
       <div className="container">
         <div className="faq-inner">
-          <div>
-            <span className="label reveal">Questions</span>
-            <h2 className="faq-title reveal stagger-2">
-              Frequently
-              <br />
-              Asked.
-              <br />
-              <span>Answered.</span>
-            </h2>
-          </div>
           <div className="faq-list reveal stagger-2">
             {faqs.map((faq, index) => {
               const isOpen = openIndex === index;
@@ -32,6 +22,16 @@ export default function FaqSection({ openIndex, onToggle }: FaqSectionProps) {
                 </div>
               );
             })}
+          </div>
+          <div className="text-right flex flex-col items-end">
+            <span className="label reveal">Questions</span>
+            <h2 className="faq-title reveal stagger-2">
+              Frequently
+              <br />
+              Asked.
+              <br />
+              <span>Answered.</span>
+            </h2>
           </div>
         </div>
       </div>

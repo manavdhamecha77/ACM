@@ -203,8 +203,8 @@ section{padding:8rem 3rem;position:relative}
 .t-info .t-role{font-size:.72rem;color:var(--mid);letter-spacing:.06em}
 
 #faq{border-bottom:1px solid var(--border);background:#f0ede7}
-.faq-inner{display:grid;grid-template-columns:1fr 2fr;gap:6rem;align-items:start}
-.faq-title{font-size:var(--fs-lg);font-weight:700;line-height:1.05;letter-spacing:-.03em;text-transform:uppercase;position:sticky;top:8rem}
+.faq-inner{display:grid;grid-template-columns:2fr 1fr;gap:6rem;align-items:start}
+.faq-title{font-size:var(--fs-xl);font-weight:700;line-height:1.1;letter-spacing:-.03em;text-transform:uppercase;position:sticky;top:8rem;text-align:right}
 .faq-title span{color:var(--red)}
 .faq-item{border-top:1px solid var(--border)}
 .faq-q{width:100%;text-align:left;background:none;border:none;cursor:pointer;padding:1.8rem 0;display:flex;justify-content:space-between;align-items:center;font-size:1rem;font-weight:500;color:var(--ink);gap:1rem}
