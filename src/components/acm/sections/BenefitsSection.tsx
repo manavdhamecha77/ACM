@@ -108,9 +108,9 @@ export default function BenefitsSection() {
                   {benefit.body}
                 </p>
                 
-                <div className="benefit-cta mt-12 group cursor-pointer flex items-center gap-4">
-                  <span className="label">Deep Dive</span>
-                  <div className="w-12 h-12 rounded-full border border-black/10 flex items-center justify-center group-hover:bg-[#FF2B2B] group-hover:border-[#FF2B2B] group-hover:text-white transition-all">
+                <div className="benefit-cta group cursor-pointer inline-flex items-center gap-6 px-8 py-4 border-2 border-black rounded-full hover:bg-black hover:text-white transition-all duration-500">
+                  <span className="label" style={{ marginBottom: 0, color: "inherit", fontSize: "0.9rem" }}>Deep Dive</span>
+                  <div className="w-10 h-10 rounded-full bg-[#FF2B2B] flex items-center justify-center text-white group-hover:scale-110 transition-transform">
                     <span>→</span>
                   </div>
                 </div>
@@ -126,15 +126,16 @@ export default function BenefitsSection() {
             display: flex; flexDirection: column; justify-content: center; 
             padding: 0 6rem;
           }
-          .benefits-left .big-title { font-size: var(--fs-xl); line-height: 1.1; margin-bottom: 2rem; text-transform: uppercase; }
+          .benefits-left .big-title { font-size: 6.5vw; line-height: 1.1; margin-bottom: 2rem; text-transform: uppercase; }
           .benefits-left .label { margin-bottom: 2rem; }
-          .benefits-left .manifesto-body { max-width: 420px; }
+          .benefits-left .manifesto-body { font-size: 1.5rem; max-width: 600px; }
           
           .benefits-right { width: 50%; height: 100%; }
-          .benefit-card-inner { padding: 0 6rem; }
-          .benefit-num { font-size: 5vw; margin-bottom: 2rem; opacity: 0.15; font-weight: 900; line-height: 1; }
-          .benefit-title { font-size: 2.5rem; text-transform: uppercase; font-weight: 900; margin-bottom: 2rem; lineHeight: 1.1; }
-          .benefit-body { font-size: 1.2rem; line-height: 1.7; color: var(--mid); max-width: 500px; text-align: right; }
+          .benefit-card-inner { padding: 0 6rem; align-items: flex-start !important; text-align: left !important; }
+          .benefit-num { font-size: 8vw; margin-bottom: 2rem; opacity: 0.15; font-weight: 900; line-height: 1; }
+          .benefit-title { font-size: 3.5rem; text-transform: uppercase; font-weight: 900; margin-bottom: 2rem; line-height: 1.1; }
+          .benefit-body { font-size: 1.4rem; line-height: 1.7; color: var(--mid); max-width: 650px; text-align: left; }
+          .benefit-cta { margin-top: 5rem; }
 
           @media (max-width: 1024px) {
             .benefits-layout { flex-direction: column; }
@@ -151,7 +152,7 @@ export default function BenefitsSection() {
             .benefit-num { font-size: 15vw; margin-bottom: 1rem; }
             .benefit-title { font-size: 1.8rem; margin-bottom: 1rem; }
             .benefit-body { font-size: 1rem; text-align: left; max-width: 100%; }
-            .benefit-cta { margin-top: 1.5rem; }
+            .benefit-cta { margin-top: 3rem; }
           }
         `}</style>
       </section>

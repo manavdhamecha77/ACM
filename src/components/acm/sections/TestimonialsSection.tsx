@@ -128,12 +128,12 @@ export default function TestimonialsSection() {
         {/* Left Side: Static Content (50%) */}
         <div className="t-static flex flex-col border-r border-[#D8D5CE] items-start bg-[#f0ede7]" style={{ width: "50%", height: "100%", display: "flex", flexDirection: "column", justifyContent: "center", paddingLeft: "6rem", paddingRight: "6rem" }}>
           <span className="label" style={{ marginBottom: "2rem" }}>Voices</span>
-          <h2 className="big-title" style={{ marginBottom: "2rem", lineHeight: 1.1 }}>
+          <h2 className="big-title" style={{ fontSize: "6.5vw", marginBottom: "2rem", lineHeight: 1.1 }}>
             What Members
             <br />
             <span>Say.</span>
           </h2>
-          <p className="manifesto-body" style={{ maxWidth: "420px", margin: 0 }}>
+          <p className="manifesto-body" style={{ fontSize: "1.5rem", maxWidth: "600px", margin: 0 }}>
             Real stories from the builders, thinkers, and innovators of ACM SVNIT.
           </p>
         </div>

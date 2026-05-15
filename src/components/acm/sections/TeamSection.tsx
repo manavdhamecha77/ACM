@@ -11,9 +11,7 @@ export default function TeamSection({ activeYear, setActiveYear }: TeamSectionPr
       <div className="container">
         <div className="team-header">
           <h2 className="team-title reveal">
-            Team
-            <br />
-            <span>Archive.</span>
+            Team <span>Archive.</span>
           </h2>
           <p className="archive-note reveal stagger-2">A living record of the people who built ACM SVNIT — year by year.</p>
         </div>

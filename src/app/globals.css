@@ -167,10 +167,10 @@ section{padding:8rem 3rem;position:relative}
 .b-body{font-size:.85rem;line-height:1.7;color:var(--mid)}
 
 #team{border-bottom:1px solid var(--border)}
-.team-header{display:grid;grid-template-columns:1fr auto;align-items:end;margin-bottom:5rem;gap:2rem}
-.team-title{font-size:var(--fs-xl);font-weight:700;line-height:1;letter-spacing:-.03em;text-transform:uppercase}
+.team-header{display:flex;flex-direction:column;align-items:center;margin-bottom:5rem;gap:1.5rem;text-align:center}
+.team-title{font-size:6.5vw;font-weight:700;line-height:1;letter-spacing:-.03em;text-transform:uppercase;text-align:center}
 .team-title span{color:var(--red)}
-.archive-note{font-size:.8rem;color:var(--mid);text-align:right;max-width:200px;line-height:1.6}
+.archive-note{font-size:1.2rem;color:var(--mid);text-align:center;max-width:600px;line-height:1.6}
 .year-tabs{display:flex;border:1px solid var(--border);margin-bottom:4rem;overflow-x:auto;width:fit-content}
 .year-tab{padding:.7rem 1.6rem;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;border:none;background:transparent;cursor:pointer;color:var(--mid);border-right:1px solid var(--border);transition:background .25s,color .25s;white-space:nowrap}
 .year-tab:last-child{border-right:none}
