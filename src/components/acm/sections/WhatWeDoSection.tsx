@@ -14,97 +14,128 @@ export default function WhatWeDoSection() {
     gsap.registerPlugin(ScrollTrigger);
 
     const isMobile = window.innerWidth < 1024;
-    if (isMobile) return;
-
     const cards = gsap.utils.toArray<HTMLElement>(".activity-card-inner");
-    if (cards.length === 0) return;
 
-    // Set initial states
-    gsap.set(cards, { 
-      autoAlpha: 0, 
-      zIndex: 1,
-      transformPerspective: 2000,
-    });
-    gsap.set(cards[0], { 
-      autoAlpha: 1, 
-      rotateY: 0, 
-      zIndex: 2 
-    });
+    if (isMobile) {
+      // Mobile: Vertical Split (Top 50% Pinned, Bottom 50% Transitions)
+      gsap.set(cards, { autoAlpha: 0, y: 20 });
+      gsap.set(cards[0], { autoAlpha: 1, y: 0 });
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: triggerRef.current,
-        start: "top top",
-        end: `+=${activities.length * 150}%`,
-        scrub: 1,
-        pin: true,
-        anticipatePin: 1,
-        invalidateOnRefresh: true,
-      },
-    });
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: triggerRef.current,
+          start: "top top",
+          end: "+=300%",
+          scrub: 1,
+          pin: true,
+          anticipatePin: 1,
+        },
+      });
 
-    // Sequence for Alternating Cube Rotation
-    cards.forEach((card, i) => {
-      if (i === 0) {
-        tl.to({}, { duration: 0.5 }); // Initial pause
-        return;
-      }
+      cards.forEach((card, i) => {
+        if (i === 0) {
+          tl.to({}, { duration: 1 });
+          return;
+        }
+        tl.to(cards[i - 1], { autoAlpha: 0, y: -20, duration: 1 });
+        tl.to(card, { autoAlpha: 1, y: 0, duration: 1 }, "<+=0.2");
+        tl.to({}, { duration: 1 });
+      });
 
-      const isVertical = i % 2 === 0;
-      const label = `step-${i}`;
+    } else {
+      // Desktop: Horizontal Split with Cube Rotation
+      gsap.set(cards, { 
+        autoAlpha: 0, 
+        zIndex: 1,
+        transformPerspective: 2000,
+      });
+      gsap.set(cards[0], { 
+        autoAlpha: 1, 
+        rotateY: 0, 
+        zIndex: 2 
+      });
 
-      if (!isVertical) {
-        // Horizontal Rotation (Y-axis)
-        tl.to(cards[i - 1], { 
-          rotateY: -90, 
-          autoAlpha: 0, 
-          transformOrigin: "center right",
-          duration: 1, 
-          ease: "power2.inOut",
-        }, label);
-        
-        tl.fromTo(card, 
-          { rotateY: 90, autoAlpha: 0, transformOrigin: "center left" },
-          { rotateY: 0, autoAlpha: 1, duration: 1, ease: "power2.inOut" },
-          label
-        );
-      } else {
-        // Vertical Rotation (X-axis)
-        tl.to(cards[i - 1], { 
-          rotateX: 90, 
-          autoAlpha: 0, 
-          transformOrigin: "top center",
-          duration: 1, 
-          ease: "power2.inOut",
-        }, label);
-        
-        tl.fromTo(card, 
-          { rotateX: -90, autoAlpha: 0, transformOrigin: "bottom center" },
-          { rotateX: 0, autoAlpha: 1, duration: 1, ease: "power2.inOut" },
-          label
-        );
-      }
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: triggerRef.current,
+          start: "top top",
+          end: `+=${activities.length * 150}%`,
+          scrub: 1,
+          pin: true,
+          anticipatePin: 1,
+          invalidateOnRefresh: true,
+        },
+      });
 
-      tl.to({}, { duration: 0.5 }); // pause
-    });
+      cards.forEach((card, i) => {
+        if (i === 0) {
+          tl.to({}, { duration: 0.5 });
+          return;
+        }
 
-    return () => {
-      tl.kill();
-    };
+        const isVertical = i % 2 === 0;
+        const label = `step-${i}`;
+
+        if (!isVertical) {
+          tl.to(cards[i - 1], { 
+            rotateY: -90, 
+            autoAlpha: 0, 
+            transformOrigin: "center right",
+            duration: 1, 
+            ease: "power2.inOut",
+          }, label);
+          
+          tl.fromTo(card, 
+            { rotateY: 90, autoAlpha: 0, transformOrigin: "center left" },
+            { rotateY: 0, autoAlpha: 1, duration: 1, ease: "power2.inOut" },
+            label
+          );
+        } else {
+          tl.to(cards[i - 1], { 
+            rotateX: 90, 
+            autoAlpha: 0, 
+            transformOrigin: "top center",
+            duration: 1, 
+            ease: "power2.inOut",
+          }, label);
+          
+          tl.fromTo(card, 
+            { rotateX: -90, autoAlpha: 0, transformOrigin: "bottom center" },
+            { rotateX: 0, autoAlpha: 1, duration: 1, ease: "power2.inOut" },
+            label
+          );
+        }
+
+        tl.to({}, { duration: 0.5 });
+      });
+    }
+
   }, { scope: triggerRef });
 
   return (
     <div ref={triggerRef} className="bg-white">
       <section 
         id="what" 
-        ref={containerRef} 
-        className="p-0 h-screen overflow-hidden flex"
+        className="p-0 h-screen overflow-hidden"
         style={{ borderBottom: "1px solid var(--border)" }}
       >
-        <div className="flex h-full w-full" style={{ display: "flex", height: "100%", width: "100%" }}>
+        <div className="what-layout flex h-full w-full">
           
-          {/* Left Side: Stacked Content (50%) - Alternating Cube Rotation */}
-          <div className="bg-black" style={{ width: "50%", height: "100%", position: "relative", perspective: "2000px" }}>
+          {/* Top/Right Side: Frozen Content */}
+          <div className="what-info flex flex-col border-[#D8D5CE] items-end text-right bg-[#f0ede7]">
+            <span className="label">Ecosystem</span>
+            <h2 className="big-title">
+              The Way
+              <br />
+              <span>We Grow.</span>
+            </h2>
+            <p className="manifesto-body">
+              A multifaceted approach to technical excellence, combining theory with aggressive practical building.
+            </p>
+          </div>
+
+          {/* Bottom/Left Side: Stacked Content */}
+          <div className="what-cards bg-black relative" style={{ perspective: "2000px" }}>
             {activities.map((activity, i) => (
               <div 
                 key={activity.title}
@@ -115,8 +146,6 @@ export default function WhatWeDoSection() {
                   left: 0,
                   width: "100%",
                   height: "100%",
-                  paddingLeft: "6rem",
-                  paddingRight: "6rem",
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "center",
@@ -129,23 +158,23 @@ export default function WhatWeDoSection() {
                   pointerEvents: i === 0 ? "auto" : "none" 
                 }}
               >
-                <span className="label" style={{ fontSize: "5vw", marginBottom: "2rem", opacity: 0.15, display: "block", fontWeight: 900, lineHeight: 1, color: "white" }}>
+                <span className="activity-num label">
                   {activity.number.split(" / ")[0]}
                 </span>
-                <h3 className="big-title" style={{ fontSize: "2.5rem", textTransform: "uppercase", fontWeight: 900, marginBottom: "2rem", lineHeight: 1.1, color: "white" }}>
+                <h3 className="activity-title">
                   {activity.title}
                 </h3>
-                <p className="manifesto-body" style={{ fontSize: "1.2rem", lineHeight: 1.7, color: "rgba(255,255,255,0.6)", maxWidth: "500px", textAlign: "left", margin: 0 }}>
+                <p className="activity-body">
                   {activity.body}
                 </p>
                 
-                <div className="mt-12 group cursor-pointer flex items-center gap-4" style={{ marginTop: "3rem", display: "flex", alignItems: "center", gap: "1rem" }}>
+                <div className="activity-cta mt-12 group cursor-pointer flex items-center gap-4">
                   <div className="flex gap-2">
                     {activity.tags.map((tag) => (
-                      <span key={tag} className="tag" style={{ border: "1px solid rgba(255,255,255,0.2)", color: "rgba(255,255,255,0.6)", padding: "0.2rem 0.6rem", fontSize: "0.7rem", textTransform: "uppercase", letterSpacing: "0.1em" }}>{tag}</span>
+                      <span key={tag} className="tag">{tag}</span>
                     ))}
                   </div>
-                  <div className="w-12 h-12 rounded-full border border-black/10 flex items-center justify-center group-hover:bg-[#FF2B2B] group-hover:border-[#FF2B2B] group-hover:text-white transition-all text-white" style={{ width: "3rem", height: "3rem" }}>
+                  <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-[#FF2B2B] group-hover:border-[#FF2B2B] group-hover:text-white transition-all text-white">
                     <span>→</span>
                   </div>
                 </div>
@@ -153,30 +182,45 @@ export default function WhatWeDoSection() {
             ))}
           </div>
 
-          {/* Right Side: Frozen Content (50%) - RIGHT ALIGNED */}
-          <div className="flex flex-col border-l border-[#D8D5CE] items-end text-right bg-[#f0ede7]" style={{ width: "50%", height: "100%", display: "flex", flexDirection: "column", justifyContent: "center", paddingLeft: "6rem", paddingRight: "6rem" }}>
-            <span className="label" style={{ marginBottom: "2rem" }}>Ecosystem</span>
-            <h2 className="big-title" style={{ marginBottom: "2rem", lineHeight: 1.1 }}>
-              The Way
-              <br />
-              <span>We Grow.</span>
-            </h2>
-            <p className="manifesto-body" style={{ maxWidth: "420px", margin: 0 }}>
-              A multifaceted approach to technical excellence, combining theory with aggressive practical building.
-            </p>
-          </div>
-
         </div>
 
         <style jsx>{`
+          .what-layout { display: flex; height: 100%; width: 100%; }
+          .what-info { 
+            width: 50%; height: 100%; border-left: 1px solid #D8D5CE; order: 2;
+            padding: 0 6rem; justify-content: center;
+          }
+          .what-info .big-title { font-size: var(--fs-xl); line-height: 1.1; margin-bottom: 2rem; text-transform: uppercase; }
+          .what-info .label { margin-bottom: 2rem; }
+          .what-info .manifesto-body { max-width: 420px; }
+
+          .what-cards { width: 50%; height: 100%; order: 1; }
+          .activity-card-inner { padding: 0 6rem; }
+          .activity-num { font-size: 5vw; margin-bottom: 2rem; opacity: 0.15; font-weight: 900; line-height: 1; color: white; }
+          .activity-title { font-size: 2.5rem; text-transform: uppercase; font-weight: 900; margin-bottom: 2rem; line-height: 1.1; color: white; }
+          .activity-body { font-size: 1.2rem; line-height: 1.7; color: rgba(255,255,255,0.6); max-width: 500px; }
+          .tag { border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.6); padding: 0.2rem 0.6rem; fontSize: 0.7rem; text-transform: uppercase; letterSpacing: 0.1em; }
+
           @media (max-width: 1024px) {
-            #what { height: auto !important; overflow: visible !important; }
-            .flex { display: block !important; }
-            .activity-card-inner { position: relative !important; opacity: 1 !important; visibility: visible !important; padding-bottom: 5rem !important; transform: none !important; }
-            .border-l { border-left: none !important; border-top: 1px solid var(--border); }
+            .what-layout { flex-direction: column; }
+            .what-info { 
+              width: 100%; height: 50vh; border-left: none; border-bottom: 1px solid #D8D5CE; order: 1;
+              padding: 2rem 1.5rem; justify-content: center; align-items: flex-start; text-align: left;
+            }
+            .what-info .big-title { font-size: 2.5rem; margin-bottom: 1rem; }
+            .what-info .label { margin-bottom: 1rem; }
+            .what-info .manifesto-body { font-size: 0.9rem; max-width: 100%; }
+
+            .what-cards { width: 100%; height: 50vh; order: 2; }
+            .activity-card-inner { padding: 2rem 1.5rem; justify-content: center; align-items: flex-start; text-align: left; }
+            .activity-num { font-size: 15vw; margin-bottom: 1rem; }
+            .activity-title { font-size: 1.8rem; margin-bottom: 1rem; }
+            .activity-body { font-size: 1rem; text-align: left; max-width: 100%; }
+            .activity-cta { margin-top: 1.5rem; }
           }
         `}</style>
       </section>
     </div>
   );
 }
+

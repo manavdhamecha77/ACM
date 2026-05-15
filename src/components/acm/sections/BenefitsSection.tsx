@@ -13,42 +13,61 @@ export default function BenefitsSection() {
     gsap.registerPlugin(ScrollTrigger);
 
     const isMobile = window.innerWidth < 1024;
-    if (isMobile) return;
-
     const cards = gsap.utils.toArray<HTMLElement>(".benefit-card-inner");
-    
-    // Initial state: first card visible, others hidden
-    gsap.set(cards, { autoAlpha: 0, y: 30 });
-    gsap.set(cards[0], { autoAlpha: 1, y: 0 });
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: "top top",
-        end: "+=300%",
-        scrub: 1,
-        pin: true,
-        anticipatePin: 1,
-      },
-    });
+    if (isMobile) {
+      // Mobile: Vertical Split (Top 50% Pinned, Bottom 50% Transitions)
+      gsap.set(cards, { autoAlpha: 0, y: 20 });
+      gsap.set(cards[0], { autoAlpha: 1, y: 0 });
 
-    // Sequence
-    cards.forEach((card, i) => {
-      if (i === 0) {
-        // First card stays for a bit
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top top",
+          end: "+=300%",
+          scrub: 1,
+          pin: true,
+          anticipatePin: 1,
+        },
+      });
+
+      cards.forEach((card, i) => {
+        if (i === 0) {
+          tl.to({}, { duration: 1 });
+          return;
+        }
+        tl.to(cards[i - 1], { autoAlpha: 0, y: -20, duration: 1 });
+        tl.to(card, { autoAlpha: 1, y: 0, duration: 1 }, "<+=0.2");
         tl.to({}, { duration: 1 });
-        return;
-      }
+      });
 
-      // Transition
-      tl.to(cards[i - 1], { autoAlpha: 0, y: -30, duration: 1 });
-      tl.to(card, { autoAlpha: 1, y: 0, duration: 1 }, "<+=0.2");
-      tl.to({}, { duration: 1 }); // Stay on current card
-    });
+    } else {
+      // Desktop: Horizontal Split
+      gsap.set(cards, { autoAlpha: 0, y: 30 });
+      gsap.set(cards[0], { autoAlpha: 1, y: 0 });
 
-    return () => {
-      tl.kill();
-    };
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top top",
+          end: "+=300%",
+          scrub: 1,
+          pin: true,
+          anticipatePin: 1,
+        },
+      });
+
+      cards.forEach((card, i) => {
+        if (i === 0) {
+          tl.to({}, { duration: 1 });
+          return;
+        }
+        tl.to(cards[i - 1], { autoAlpha: 0, y: -30, duration: 1 });
+        tl.to(card, { autoAlpha: 1, y: 0, duration: 1 }, "<+=0.2");
+        tl.to({}, { duration: 1 });
+      });
+    }
+
   }, { scope: containerRef });
 
   return (
@@ -58,23 +77,23 @@ export default function BenefitsSection() {
       className="p-0 bg-[#f0ede7] h-screen overflow-hidden"
       style={{ borderBottom: "1px solid var(--border)" }}
     >
-      <div className="flex h-full w-full" style={{ display: "flex", height: "100%", width: "100%" }}>
+      <div className="benefits-layout flex h-full w-full">
         
-        {/* Left Side: Frozen Content (50%) - LEFT ALIGNED */}
-        <div className="flex flex-col border-r border-[#D8D5CE] items-start" style={{ width: "50%", height: "100%", display: "flex", flexDirection: "column", justifyContent: "center", paddingLeft: "6rem", paddingRight: "6rem" }}>
-          <span className="label" style={{ marginBottom: "2rem" }}>Membership</span>
-          <h2 className="big-title" style={{ marginBottom: "2rem", lineHeight: 1.1 }}>
-            Why Join
+        {/* Top/Left Side: Frozen Content */}
+        <div className="benefits-left flex flex-col border-[#D8D5CE] items-start">
+          <span className="label">Membership</span>
+          <h2 className="big-title">
+            The Way
             <br />
-            <span>ACM SVNIT?</span>
+            <span>We Grow.</span>
           </h2>
-          <p className="manifesto-body" style={{ maxWidth: "420px", margin: 0 }}>
+          <p className="manifesto-body">
             We provide the tools, community, and platform for engineering students to excel beyond the classroom.
           </p>
         </div>
 
-        {/* Right Side: Stacked Content (50%) - RIGHT ALIGNED */}
-        <div className="bg-white" style={{ width: "50%", height: "100%", position: "relative" }}>
+        {/* Bottom/Right Side: Stacked Content */}
+        <div className="benefits-right bg-white relative">
           {benefits.map((benefit, i) => (
             <div 
               key={benefit.title}
@@ -85,8 +104,6 @@ export default function BenefitsSection() {
                 left: 0,
                 width: "100%",
                 height: "100%",
-                paddingLeft: "6rem",
-                paddingRight: "6rem",
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "center",
@@ -95,19 +112,19 @@ export default function BenefitsSection() {
                 pointerEvents: i === 0 ? "auto" : "none" 
               }}
             >
-              <span className="label" style={{ fontSize: "5vw", marginBottom: "2rem", opacity: 0.15, display: "block", fontWeight: 900, lineHeight: 1 }}>
+              <span className="benefit-num label">
                 {benefit.number}
               </span>
-              <h3 className="big-title" style={{ fontSize: "2.5rem", textTransform: "uppercase", fontWeight: 900, marginBottom: "2rem", lineHeight: 1.1 }}>
+              <h3 className="benefit-title">
                 {benefit.title}
               </h3>
-              <p className="manifesto-body" style={{ fontSize: "1.2rem", lineHeight: 1.7, color: "var(--mid)", maxWidth: "500px", textAlign: "right", margin: 0 }}>
+              <p className="benefit-body">
                 {benefit.body}
               </p>
               
-              <div className="mt-12 group cursor-pointer flex items-center gap-4" style={{ marginTop: "3rem", display: "flex", alignItems: "center", gap: "1rem" }}>
-                <span className="label" style={{ marginBottom: 0, fontSize: "0.7rem", color: "var(--ink)" }}>Deep Dive</span>
-                <div className="w-12 h-12 rounded-full border border-black/10 flex items-center justify-center group-hover:bg-[#FF2B2B] group-hover:border-[#FF2B2B] group-hover:text-white transition-all" style={{ width: "3rem", height: "3rem" }}>
+              <div className="benefit-cta mt-12 group cursor-pointer flex items-center gap-4">
+                <span className="label">Deep Dive</span>
+                <div className="w-12 h-12 rounded-full border border-black/10 flex items-center justify-center group-hover:bg-[#FF2B2B] group-hover:border-[#FF2B2B] group-hover:text-white transition-all">
                   <span>→</span>
                 </div>
               </div>
@@ -117,15 +134,41 @@ export default function BenefitsSection() {
       </div>
 
       <style jsx>{`
+        .benefits-layout { display: flex; height: 100%; width: 100%; }
+        .benefits-left { 
+          width: 50%; height: 100%; border-right: 1px solid #D8D5CE;
+          display: flex; flexDirection: column; justify-content: center; 
+          padding: 0 6rem;
+        }
+        .benefits-left .big-title { font-size: var(--fs-xl); line-height: 1.1; margin-bottom: 2rem; text-transform: uppercase; }
+        .benefits-left .label { margin-bottom: 2rem; }
+        .benefits-left .manifesto-body { max-width: 420px; }
+        
+        .benefits-right { width: 50%; height: 100%; }
+        .benefit-card-inner { padding: 0 6rem; }
+        .benefit-num { font-size: 5vw; margin-bottom: 2rem; opacity: 0.15; font-weight: 900; line-height: 1; }
+        .benefit-title { font-size: 2.5rem; text-transform: uppercase; font-weight: 900; margin-bottom: 2rem; lineHeight: 1.1; }
+        .benefit-body { font-size: 1.2rem; line-height: 1.7; color: var(--mid); max-width: 500px; text-align: right; }
+
         @media (max-width: 1024px) {
-          #benefits { height: auto !important; overflow: visible !important; }
-          .flex { display: block !important; }
-          .w-1/2 { width: 100% !important; height: auto !important; }
-          .pt-\[20vh\] { padding-top: 5rem !important; }
-          .benefit-card-inner { position: relative !important; opacity: 1 !important; visibility: visible !important; padding-bottom: 5rem !important; }
-          .border-r { border-right: none !important; border-bottom: 1px solid var(--border); }
+          .benefits-layout { flex-direction: column; }
+          .benefits-left { 
+            width: 100%; height: 50vh; border-right: none; border-bottom: 1px solid #D8D5CE;
+            padding: 2rem 1.5rem; justify-content: center; align-items: flex-start;
+          }
+          .benefits-left .big-title { font-size: 2.5rem; margin-bottom: 1rem; }
+          .benefits-left .label { margin-bottom: 1rem; }
+          .benefits-left .manifesto-body { font-size: 0.9rem; max-width: 100%; }
+
+          .benefits-right { width: 100%; height: 50vh; }
+          .benefit-card-inner { padding: 2rem 1.5rem; justify-content: center; align-items: flex-start; text-align: left; }
+          .benefit-num { font-size: 15vw; margin-bottom: 1rem; }
+          .benefit-title { font-size: 1.8rem; margin-bottom: 1rem; }
+          .benefit-body { font-size: 1rem; text-align: left; max-width: 100%; }
+          .benefit-cta { margin-top: 1.5rem; }
         }
       `}</style>
     </section>
   );
 }
+
