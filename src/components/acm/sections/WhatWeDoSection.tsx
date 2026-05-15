@@ -18,15 +18,15 @@ export default function WhatWeDoSection() {
 
     if (isMobile) {
       // Mobile: Vertical Split (Top 50% Pinned, Bottom 50% Transitions)
-      gsap.set(cards, { 
-        autoAlpha: 0, 
+      gsap.set(cards, {
+        autoAlpha: 0,
         zIndex: 1,
         transformPerspective: 2000,
       });
-      gsap.set(cards[0], { 
-        autoAlpha: 1, 
-        rotateY: 0, 
-        zIndex: 2 
+      gsap.set(cards[0], {
+        autoAlpha: 1,
+        rotateY: 0,
+        zIndex: 2
       });
 
       const tl = gsap.timeline({
@@ -50,29 +50,29 @@ export default function WhatWeDoSection() {
         const label = `step-${i}`;
 
         if (!isVertical) {
-          tl.to(cards[i - 1], { 
-            rotateY: -90, 
-            autoAlpha: 0, 
+          tl.to(cards[i - 1], {
+            rotateY: -90,
+            autoAlpha: 0,
             transformOrigin: "center right",
-            duration: 1, 
+            duration: 1,
             ease: "power2.inOut",
           }, label);
-          
-          tl.fromTo(card, 
+
+          tl.fromTo(card,
             { rotateY: 90, autoAlpha: 0, transformOrigin: "center left" },
             { rotateY: 0, autoAlpha: 1, duration: 1, ease: "power2.inOut" },
             label
           );
         } else {
-          tl.to(cards[i - 1], { 
-            rotateX: 90, 
-            autoAlpha: 0, 
+          tl.to(cards[i - 1], {
+            rotateX: 90,
+            autoAlpha: 0,
             transformOrigin: "top center",
-            duration: 1, 
+            duration: 1,
             ease: "power2.inOut",
           }, label);
-          
-          tl.fromTo(card, 
+
+          tl.fromTo(card,
             { rotateX: -90, autoAlpha: 0, transformOrigin: "bottom center" },
             { rotateX: 0, autoAlpha: 1, duration: 1, ease: "power2.inOut" },
             label
@@ -85,15 +85,15 @@ export default function WhatWeDoSection() {
     } else {
 
       // Desktop: Horizontal Split with Cube Rotation
-      gsap.set(cards, { 
-        autoAlpha: 0, 
+      gsap.set(cards, {
+        autoAlpha: 0,
         zIndex: 1,
         transformPerspective: 2000,
       });
-      gsap.set(cards[0], { 
-        autoAlpha: 1, 
-        rotateY: 0, 
-        zIndex: 2 
+      gsap.set(cards[0], {
+        autoAlpha: 1,
+        rotateY: 0,
+        zIndex: 2
       });
 
       const tl = gsap.timeline({
@@ -118,29 +118,29 @@ export default function WhatWeDoSection() {
         const label = `step-${i}`;
 
         if (!isVertical) {
-          tl.to(cards[i - 1], { 
-            rotateY: -90, 
-            autoAlpha: 0, 
+          tl.to(cards[i - 1], {
+            rotateY: -90,
+            autoAlpha: 0,
             transformOrigin: "center right",
-            duration: 1, 
+            duration: 1,
             ease: "power2.inOut",
           }, label);
-          
-          tl.fromTo(card, 
+
+          tl.fromTo(card,
             { rotateY: 90, autoAlpha: 0, transformOrigin: "center left" },
             { rotateY: 0, autoAlpha: 1, duration: 1, ease: "power2.inOut" },
             label
           );
         } else {
-          tl.to(cards[i - 1], { 
-            rotateX: 90, 
-            autoAlpha: 0, 
+          tl.to(cards[i - 1], {
+            rotateX: 90,
+            autoAlpha: 0,
             transformOrigin: "top center",
-            duration: 1, 
+            duration: 1,
             ease: "power2.inOut",
           }, label);
-          
-          tl.fromTo(card, 
+
+          tl.fromTo(card,
             { rotateX: -90, autoAlpha: 0, transformOrigin: "bottom center" },
             { rotateX: 0, autoAlpha: 1, duration: 1, ease: "power2.inOut" },
             label
@@ -155,13 +155,13 @@ export default function WhatWeDoSection() {
 
   return (
     <div ref={triggerRef} className="bg-white">
-      <section 
-        id="what" 
+      <section
+        id="what"
         className="p-0 h-screen overflow-hidden"
         style={{ borderBottom: "1px solid var(--border)" }}
       >
         <div className="what-layout flex h-full w-full">
-          
+
           {/* Top/Right Side: Frozen Content */}
           <div className="what-info flex flex-col border-[#D8D5CE] items-end text-right bg-[#f0ede7]">
             <span className="label">Ecosystem</span>
@@ -178,10 +178,10 @@ export default function WhatWeDoSection() {
           {/* Bottom/Left Side: Stacked Content */}
           <div className="what-cards bg-black relative" style={{ perspective: "2000px" }}>
             {activities.map((activity, i) => (
-              <div 
+              <div
                 key={activity.title}
                 className="activity-card-inner"
-                style={{ 
+                style={{
                   position: "absolute",
                   top: 0,
                   left: 0,
@@ -194,9 +194,9 @@ export default function WhatWeDoSection() {
                   textAlign: "left",
                   backfaceVisibility: "hidden",
                   transformStyle: "preserve-3d",
-                  opacity: i === 0 ? 1 : 0, 
+                  opacity: i === 0 ? 1 : 0,
                   visibility: i === 0 ? "visible" : "hidden",
-                  pointerEvents: i === 0 ? "auto" : "none" 
+                  pointerEvents: i === 0 ? "auto" : "none"
                 }}
               >
                 <span className="activity-num label">
@@ -208,7 +208,7 @@ export default function WhatWeDoSection() {
                 <p className="activity-body">
                   {activity.body}
                 </p>
-                
+
                 <div className="activity-cta mt-12 group cursor-pointer flex items-center gap-4">
                   <div className="flex gap-2">
                     {activity.tags.map((tag) => (
