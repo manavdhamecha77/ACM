@@ -142,12 +142,12 @@ export default function BenefitsSection() {
               width: 100%; height: 50vh; border-right: none; border-bottom: 1px solid #D8D5CE;
               padding: 2rem 1.5rem; justify-content: center; align-items: flex-start;
             }
-            .benefits-left .big-title { font-size: 2.5rem; margin-bottom: 1rem; }
+            .benefits-left .big-title { font-size: 3.5rem; margin-bottom: 1rem; }
             .benefits-left .label { margin-bottom: 1rem; }
             .benefits-left .manifesto-body { font-size: 0.9rem; max-width: 100%; }
 
             .benefits-right { width: 100%; height: 50vh; }
-            .benefit-card-inner { padding: 2rem 1.5rem; justify-content: center; align-items: flex-start; text-align: left; }
+            .benefit-card-inner { padding: 3.5rem 1.5rem 2rem; justify-content: center; align-items: flex-start; text-align: left; }
             .benefit-num { font-size: 15vw; margin-bottom: 1rem; }
             .benefit-title { font-size: 1.8rem; margin-bottom: 1rem; }
             .benefit-body { font-size: 1rem; text-align: left; max-width: 100%; }

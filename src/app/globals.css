@@ -339,9 +339,12 @@ footer{padding:4rem 3rem;display:grid;grid-template-columns:1fr auto 1fr;align-i
 
   section{padding:5rem 1.5rem}
   .manifesto-inner,.benefits-inner,.testimonials-inner,.team-header{grid-template-columns:1fr; gap: 0rem;}
+  .team-title { font-size: 3.5rem; margin-bottom: 2rem; }
+  .archive-note { text-align: left; max-width: none; margin-bottom: 0rem; }
   .faq-inner { display: flex; flex-direction: column; gap: 3rem; }
   .faq-header-container { order: -1; align-items: flex-start !important; text-align: left !important; }
-  .faq-title { position: static !important; text-align: left !important; }
+  .faq-title { position: static !important; text-align: left !important; font-size: 3.5rem; }
+  .cta-headline { font-size: 3.5rem; }
   .manifesto-stat{ margin-bottom: 0rem; }
   .manifesto-pillars{ margin-top: 1rem; padding-top: 0rem; }
 

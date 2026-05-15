@@ -175,7 +175,7 @@ export default function EventsSection() {
             margin-bottom: 1rem !important;
           }
           .header-slide .big-title {
-            font-size: 14vw !important;
+            font-size: 11vw !important;
           }
           .label {
             font-size: 0.8rem !important;

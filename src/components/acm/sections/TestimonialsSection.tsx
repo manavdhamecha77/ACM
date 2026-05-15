@@ -214,7 +214,7 @@ export default function TestimonialsSection() {
             position: relative !important;
             display: block !important;
           }
-          .big-title { font-size: 9vw !important; line-height: 1.1 !important; }
+          .big-title { font-size: 3.5rem !important; line-height: 1.1 !important; margin-bottom: 0 !important; }
           .manifesto-body { font-size: 0.9rem !important; margin-top: 0.8rem !important; }
           .t-card { 
             padding: 0.5rem !important; 

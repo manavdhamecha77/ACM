@@ -166,9 +166,9 @@ export default function WhatWeDoSection() {
           <div className="what-info flex flex-col border-[#D8D5CE] items-end text-right bg-[#f0ede7]">
             <span className="label">Ecosystem</span>
             <h2 className="big-title">
-              The Way
+              What do
               <br />
-              <span>We Grow.</span>
+              <span>We Do?</span>
             </h2>
             <p className="manifesto-body">
               A multifaceted approach to technical excellence, combining theory with aggressive practical building.
@@ -248,7 +248,7 @@ export default function WhatWeDoSection() {
               width: 100%; height: 50vh; border-left: none; border-bottom: 1px solid #D8D5CE; order: 1;
               padding: 2rem 1.5rem; justify-content: center; align-items: flex-start; text-align: left;
             }
-            .what-info .big-title { font-size: 2.5rem; margin-bottom: 1rem; }
+            .what-info .big-title { font-size: 3.5rem; margin-bottom: 1rem; }
             .what-info .label { margin-bottom: 1rem; }
             .what-info .manifesto-body { font-size: 0.9rem; max-width: 100%; }
 
