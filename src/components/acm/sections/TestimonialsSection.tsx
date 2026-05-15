@@ -175,7 +175,7 @@ export default function TestimonialsSection() {
               }}
             >
               <div>
-                <span style={{ color: "#FF2B2B", fontSize: "2rem", lineHeight: 1, fontFamily: "serif", display: "block", marginBottom: "0.2rem" }}>"</span>
+                <span style={{ color: "#FF2B2B", fontSize: "2rem", lineHeight: 1, fontFamily: "serif", display: "block", marginBottom: "0.2rem" }}>&quot;</span>
                 <p style={{ color: "#111", fontSize: "0.9rem", lineHeight: 1.6, fontWeight: 500, margin: 0 }}>
                   {testimonial.quote}
                 </p>

@@ -38,6 +38,7 @@ export default function TeamSection({ activeYear, setActiveYear }: TeamSectionPr
                 role.names.map((name) => ({
                   name,
                   role: role.label,
+                  dept: "",
                 })),
               ) ?? [];
             const members = details.type === "current" ? (details.members ?? []) : archiveMembers;

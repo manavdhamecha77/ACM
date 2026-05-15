@@ -173,7 +173,7 @@ export const teamData: Record<string, TeamYear> = {
       { name: "Sneha Patel", role: "Events Head", dept: "B.Tech EC" },
       { name: "Dev Mehta", role: "Design Lead", dept: "B.Tech IT" },
       { name: "Ananya Joshi", role: "Outreach Lead", dept: "B.Tech CS" },
-      { name: "Karan Singh", role: "Web Dev Lead", dest: "B.Tech CS" },
+      { name: "Karan Singh", role: "Web Dev Lead", dept: "B.Tech CS" },
       { name: "Meera Iyer", role: "Content Lead", dept: "B.Tech CE" },
     ],
   },
