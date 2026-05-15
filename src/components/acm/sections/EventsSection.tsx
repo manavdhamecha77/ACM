@@ -100,9 +100,8 @@ export default function EventsSection() {
               className="slide-item h-screen w-screen flex flex-col justify-center px-12 shrink-0 border-r border-white/10"
               style={{ background: idx % 2 === 0 ? "#000" : "#0a0a0a" }}
             >
-              <div className="flex items-baseline gap-4 mb-8">
-                <span className="label" style={{ fontSize: "4rem", marginBottom: 0, opacity: 0.2 }}>{event.number}</span>
-                <span className="label" style={{ fontSize: "0.8rem" }}>{event.type}</span>
+              <div className="mb-8">
+                <span className="label" style={{ fontSize: "12rem", marginBottom: 0, opacity: 0.4 }}>{event.number}</span>
               </div>
               <h3 className="big-title" style={{ color: "white", fontSize: "8vw", marginBottom: "2rem" }}>
                 {event.name}

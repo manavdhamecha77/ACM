@@ -114,16 +114,16 @@ section{padding:8rem 3rem;position:relative}
 .manifesto-headline span{color:var(--red)}
 .manifesto-body{font-size:var(--fs-md);line-height:1.7;color:#aaa;margin-top:2rem}
 .manifesto-pillars{margin-top:3rem;display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-.pillar{border-top:1px solid #333;padding-top:1rem}
-.pillar-n{font-size:.7rem;letter-spacing:.14em;color:var(--red);text-transform:uppercase;margin-bottom:.3rem}
-.pillar-t{font-size:.95rem;font-weight:500;color:var(--bg)}
+.pillar{border-top:1px solid #333;padding-top:1.5rem}
+.pillar-n{font-size:.85rem;letter-spacing:.14em;color:var(--red);text-transform:uppercase;margin-bottom:.5rem}
+.pillar-t{font-size:1.2rem;font-weight:500;color:var(--bg)}
 .manifesto-bignum{font-size:clamp(6rem,14vw,12rem);font-weight:800;color:transparent;-webkit-text-stroke:1px #333;line-height:1;letter-spacing:-.04em}
-.manifesto-stat{margin-top:2rem;display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
-.stat{border:1px solid #333;padding:1.5rem;transition:all .3s var(--ease);cursor:default}
+.manifesto-stat{margin-top:2rem;display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.stat{border:1px solid #333;padding:2rem;transition:all .3s var(--ease);cursor:default}
 .stat:hover{border-color:var(--red);background:rgba(255,255,255,.05)}
-.stat-val{font-size:2.5rem;font-weight:700;color:var(--bg);letter-spacing:-.03em}
+.stat-val{font-size:3.5rem;font-weight:700;color:var(--bg);letter-spacing:-.03em}
 .stat-val span{color:var(--red)}
-.stat-label{font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:#666;margin-top:.2rem}
+.stat-label{font-size:.9rem;letter-spacing:.12em;text-transform:uppercase;color:#666;margin-top:.4rem}
 
 #what{border-bottom:1px solid var(--border)}
 .what-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:6rem;gap:3rem;flex-wrap:wrap}

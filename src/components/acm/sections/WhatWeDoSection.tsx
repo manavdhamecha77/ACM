@@ -231,16 +231,16 @@ export default function WhatWeDoSection() {
             width: 50%; height: 100%; border-left: 1px solid #D8D5CE; order: 2;
             padding: 0 6rem; justify-content: center;
           }
-          .what-info .big-title { font-size: var(--fs-xl); line-height: 1.1; margin-bottom: 2rem; text-transform: uppercase; }
+          .what-info .big-title { font-size: 6.5vw; line-height: 1.1; margin-bottom: 2rem; text-transform: uppercase; }
           .what-info .label { margin-bottom: 2rem; }
-          .what-info .manifesto-body { max-width: 420px; }
+          .what-info .manifesto-body { font-size: 1.5rem; max-width: 600px; }
 
           .what-cards { width: 50%; height: 100%; order: 1; }
           .activity-card-inner { padding: 0 6rem; }
-          .activity-num { font-size: 5vw; margin-bottom: 2rem; opacity: 0.15; font-weight: 900; line-height: 1; color: white; }
-          .activity-title { font-size: 2.5rem; text-transform: uppercase; font-weight: 900; margin-bottom: 2rem; line-height: 1.1; color: white; }
-          .activity-body { font-size: 1.2rem; line-height: 1.7; color: rgba(255,255,255,0.6); max-width: 500px; }
-          .tag { border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.6); padding: 0.2rem 0.6rem; fontSize: 0.7rem; text-transform: uppercase; letterSpacing: 0.1em; }
+          .activity-num { font-size: 8vw; margin-bottom: 2rem; opacity: 0.15; font-weight: 900; line-height: 1; color: white; }
+          .activity-title { font-size: 3.5rem; text-transform: uppercase; font-weight: 900; margin-bottom: 2rem; line-height: 1.1; color: white; }
+          .activity-body { font-size: 1.4rem; line-height: 1.7; color: rgba(255,255,255,0.6); max-width: 650px; }
+          .tag { border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.6); padding: 0.3rem 0.8rem; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; }
 
           @media (max-width: 1024px) {
             .what-layout { flex-direction: column; }
