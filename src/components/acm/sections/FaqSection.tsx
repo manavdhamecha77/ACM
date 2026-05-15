@@ -23,7 +23,7 @@ export default function FaqSection({ openIndex, onToggle }: FaqSectionProps) {
               );
             })}
           </div>
-          <div className="text-right flex flex-col items-end">
+          <div className="faq-header-container text-right flex flex-col items-end">
             <span className="label reveal">Questions</span>
             <h2 className="faq-title reveal stagger-2">
               Frequently
