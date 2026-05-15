@@ -11,7 +11,6 @@ export default function HeroSection() {
         className="manifesto-bignum hero-bg-text" 
         style={{ 
           position: "absolute", 
-          bottom: "22rem", 
           left: "50%", 
           transform: "translateX(-50%)", 
           zIndex: 0,
@@ -20,6 +19,7 @@ export default function HeroSection() {
       >
         ACM
       </div>
+
 
       <div className="hero-year">2026</div>
       {/* <div className="hero-index reveal stagger-1">NIT Surat / Gujarat, India</div> */}
@@ -31,16 +31,29 @@ export default function HeroSection() {
         <br />
         <em>Evolve.</em>
       </h1>
+
+      <blockquote className="hero-quote reveal stagger-4">
+        Learning never exhausts the mind.
+        <cite>— Leonardo Da Vinci</cite>
+      </blockquote>
+
       <div className="hero-bottom">
-        <blockquote className="hero-quote reveal stagger-4">
-          Learning never exhausts the mind.
-          <cite>— Leonardo Da Vinci</cite>
-        </blockquote>
+        <div className="hero-ctas reveal stagger-5">
+          <a href="#cta" className="cta-btn primary">
+            <span>Join Chapter</span>
+            <span className="cta-arrow">↗</span>
+          </a>
+          <a href="#events" className="cta-btn secondary">
+            <span>Explore Events</span>
+          </a>
+        </div>
         
         <Magnetic strength={20}>
-          <span className="hero-scroll reveal stagger-5 cursor-pointer">Scroll to explore</span>
+          <span className="hero-scroll reveal stagger-6 cursor-pointer">Scroll to explore</span>
         </Magnetic>
       </div>
     </section>
+
+
   );
 }

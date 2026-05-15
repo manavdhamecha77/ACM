@@ -5,11 +5,11 @@
   --red:#FF2B2B;
   --mid:#888;
   --border:#D8D5CE;
-  --fs-hero:clamp(3.5rem,10vw,9rem);
+  --fs-hero:clamp(5.5rem,12vw,13.5rem);
   --fs-xl:clamp(2.5rem,6vw,5.5rem);
   --fs-lg:clamp(1.8rem,4vw,3.2rem);
   --fs-md:clamp(1.1rem,2vw,1.4rem);
-  --fs-sm:0.85rem;
+  --fs-sm:0.9rem;
   --ease:cubic-bezier(0.16,1,0.3,1);
 }
 html{scroll-behavior:smooth;font-size:16px}
@@ -74,8 +74,8 @@ section{padding:8rem 3rem;position:relative}
 }
 
 #hero{
-  min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;
-  padding:6rem 3rem 5rem;
+  min-height:100svh;display:flex;flex-direction:column;justify-content:center;
+  padding:4rem 3rem 5rem;
   border-bottom:1px solid var(--border);
   overflow:hidden;
   position:relative;
@@ -96,12 +96,16 @@ section{padding:8rem 3rem;position:relative}
 .hero-acm{font-size:var(--fs-sm);letter-spacing:.2em;text-transform:uppercase;color:var(--mid);margin-bottom:2rem}
 .hero-headline{font-size:var(--fs-hero);font-weight:700;line-height:.92;letter-spacing:-.03em;text-transform:uppercase;position:relative;z-index:1}
 .hero-headline em{font-style:normal;color:var(--red);display:inline-block}
-.hero-bottom{display:flex;align-items:flex-end;justify-content:space-between;margin-top:4rem;gap:2rem;flex-wrap:wrap}
-.hero-quote{max-width:380px;font-size:.88rem;line-height:1.7;color:var(--mid);border-left:2px solid var(--red);padding-left:1.2rem}
+.hero-bottom{display:flex;align-items:flex-end;justify-content:space-between;margin-top:3rem;gap:2rem;flex-wrap:wrap}
+
+.hero-quote{max-width:380px;font-size:.88rem;line-height:1.7;color:var(--mid);border-left:2px solid var(--red);padding-left:1.2rem;margin-top:2rem}
+
 .hero-quote cite{display:block;margin-top:.5rem;font-style:normal;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase}
 .hero-scroll{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mid);display:flex;align-items:center;gap:.8rem}
 .hero-scroll::before{content:'';width:40px;height:1px;background:var(--mid)}
 .hero-year{position:absolute;bottom:5rem;left:50%;transform:translateX(-50%);font-size:clamp(5rem,18vw,16rem);font-weight:800;letter-spacing:-.05em;color:transparent;-webkit-text-stroke:1px var(--border);pointer-events:none;white-space:nowrap;z-index:0}
+.hero-bg-text{bottom:22rem;pointer-events:none;white-space:nowrap}
+
 
 #manifesto{border-bottom:1px solid var(--border);background:var(--ink);color:var(--bg);overflow:hidden}
 .manifesto-inner{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
@@ -219,11 +223,21 @@ section{padding:8rem 3rem;position:relative}
 .cta-headline{font-size:var(--fs-xl);font-weight:700;line-height:1;letter-spacing:-.03em;text-transform:uppercase;max-width:700px;margin-bottom:3rem}
 .cta-headline span{color:var(--red)}
 .cta-sub{font-size:.95rem;color:var(--mid);max-width:400px;line-height:1.7;margin-bottom:3rem}
-.cta-btn{display:inline-flex;align-items:center;gap:1rem;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;padding:1rem 2rem;background:var(--ink);color:var(--bg);text-decoration:none;border:2px solid var(--ink);transition:background .3s,color .3s;position:relative;overflow:hidden}
+.cta-btn{display:inline-flex;align-items:center;gap:1rem;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;padding:1rem 2rem;background:var(--ink);color:var(--bg);text-decoration:none;border:2px solid var(--ink);transition:background .3s,color .3s;position:relative;overflow:hidden;cursor: pointer;}
 .cta-btn::before{content:'';position:absolute;inset:0;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease);z-index:0}
 .cta-btn:hover::before{transform:scaleX(1)}
 .cta-btn>*{position:relative;z-index:1}
+.cta-btn.secondary{background:transparent;color:var(--ink);border-color:var(--border)}
+.cta-btn.secondary:hover{border-color:var(--red);color:var(--bg)}
 .cta-arrow{font-size:1.1rem}
+
+.hero-ctas{display:flex;gap:1.5rem;align-items:center}
+@media(max-width:900px){
+  .hero-ctas{width:100%;flex-direction:column;align-items:stretch;gap:1rem}
+  .hero-ctas .cta-btn{justify-content:center; padding: 1.2rem 2rem;}
+}
+
+
 
 footer{padding:4rem 3rem;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:2rem;border-top:1px solid var(--border)}
 .footer-brand{font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;font-weight:600}
@@ -336,16 +350,16 @@ footer{padding:4rem 3rem;display:grid;grid-template-columns:1fr auto 1fr;align-i
   .footer-links{flex-wrap:wrap}
   .footer-right{text-align:center}
   #hero{
-    padding: 6rem 1.5rem 3rem;
-    justify-content: flex-start;
-    min-height: auto;
+    padding: 2rem 1.5rem;
+    justify-content: center;
+    min-height: 100svh;
   }
-  .hero-headline{ font-size: clamp(3rem, 15vw, 5rem); line-height: 1.1; margin-top: 2rem; }
-  .hero-bottom{ flex-direction: column; align-items: flex-start; margin-top: 3rem; gap: 2rem; }
+  .hero-headline{ font-size: clamp(4rem, 18vw, 6.5rem); line-height: 0.95; margin-top: 1.5rem; }
+  .hero-bottom{ flex-direction: column; align-items: flex-start; margin-top: 2rem; gap: 2.5rem; }
   .hero-quote{ max-width: none; }
   .hero-scroll{ display: none; }
-  .hero-bg-text{ display: none !important; }
-  .hero-year{display:none}
+  .hero-bg-text{ display: block; font-size: clamp(5rem, 30vw, 12rem); bottom: 10rem; opacity: 0.6; pointer-events: none; }
+  .hero-year{ display: block; font-size: clamp(4rem, 20vw, 10rem); bottom: 2rem; opacity: 0.6; pointer-events: none; }
 
   .cta-bg-text{display:none}
 }
