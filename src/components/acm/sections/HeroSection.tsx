@@ -8,7 +8,7 @@ export default function HeroSection() {
       <div className="hero-grid"></div>
       
       <div 
-        className="manifesto-bignum" 
+        className="manifesto-bignum hero-bg-text" 
         style={{ 
           position: "absolute", 
           bottom: "22rem", 
@@ -20,6 +20,7 @@ export default function HeroSection() {
       >
         ACM
       </div>
+
       <div className="hero-year">2026</div>
       {/* <div className="hero-index reveal stagger-1">NIT Surat / Gujarat, India</div> */}
       <p className="hero-acm reveal stagger-2">Association for Computing Machinery — SVNIT Student Chapter</p>
