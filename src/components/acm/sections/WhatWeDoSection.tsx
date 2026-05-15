@@ -18,14 +18,22 @@ export default function WhatWeDoSection() {
 
     if (isMobile) {
       // Mobile: Vertical Split (Top 50% Pinned, Bottom 50% Transitions)
-      gsap.set(cards, { autoAlpha: 0, y: 20 });
-      gsap.set(cards[0], { autoAlpha: 1, y: 0 });
+      gsap.set(cards, { 
+        autoAlpha: 0, 
+        zIndex: 1,
+        transformPerspective: 2000,
+      });
+      gsap.set(cards[0], { 
+        autoAlpha: 1, 
+        rotateY: 0, 
+        zIndex: 2 
+      });
 
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: triggerRef.current,
           start: "top top",
-          end: "+=300%",
+          end: "+=400%",
           scrub: 1,
           pin: true,
           anticipatePin: 1,
@@ -34,15 +42,48 @@ export default function WhatWeDoSection() {
 
       cards.forEach((card, i) => {
         if (i === 0) {
-          tl.to({}, { duration: 1 });
+          tl.to({}, { duration: 0.5 });
           return;
         }
-        tl.to(cards[i - 1], { autoAlpha: 0, y: -20, duration: 1 });
-        tl.to(card, { autoAlpha: 1, y: 0, duration: 1 }, "<+=0.2");
-        tl.to({}, { duration: 1 });
+
+        const isVertical = i % 2 === 0;
+        const label = `step-${i}`;
+
+        if (!isVertical) {
+          tl.to(cards[i - 1], { 
+            rotateY: -90, 
+            autoAlpha: 0, 
+            transformOrigin: "center right",
+            duration: 1, 
+            ease: "power2.inOut",
+          }, label);
+          
+          tl.fromTo(card, 
+            { rotateY: 90, autoAlpha: 0, transformOrigin: "center left" },
+            { rotateY: 0, autoAlpha: 1, duration: 1, ease: "power2.inOut" },
+            label
+          );
+        } else {
+          tl.to(cards[i - 1], { 
+            rotateX: 90, 
+            autoAlpha: 0, 
+            transformOrigin: "top center",
+            duration: 1, 
+            ease: "power2.inOut",
+          }, label);
+          
+          tl.fromTo(card, 
+            { rotateX: -90, autoAlpha: 0, transformOrigin: "bottom center" },
+            { rotateX: 0, autoAlpha: 1, duration: 1, ease: "power2.inOut" },
+            label
+          );
+        }
+
+        tl.to({}, { duration: 0.5 });
       });
 
     } else {
+
       // Desktop: Horizontal Split with Cube Rotation
       gsap.set(cards, { 
         autoAlpha: 0, 
