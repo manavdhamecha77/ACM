@@ -61,7 +61,7 @@ export default function BenefitsSection() {
       <div className="flex h-full w-full" style={{ display: "flex", height: "100%", width: "100%" }}>
         
         {/* Left Side: Frozen Content (50%) - LEFT ALIGNED */}
-        <div className="flex flex-col border-r border-[#D8D5CE] items-start" style={{ width: "50%", height: "100%", display: "flex", flexDirection: "column", paddingTop: "20vh", paddingLeft: "6rem", paddingRight: "6rem" }}>
+        <div className="flex flex-col border-r border-[#D8D5CE] items-start" style={{ width: "50%", height: "100%", display: "flex", flexDirection: "column", justifyContent: "center", paddingLeft: "6rem", paddingRight: "6rem" }}>
           <span className="label" style={{ marginBottom: "2rem" }}>Membership</span>
           <h2 className="big-title" style={{ marginBottom: "2rem", lineHeight: 1.1 }}>
             Why Join
@@ -85,11 +85,11 @@ export default function BenefitsSection() {
                 left: 0,
                 width: "100%",
                 height: "100%",
-                paddingTop: "20vh",
                 paddingLeft: "6rem",
                 paddingRight: "6rem",
                 display: "flex",
                 flexDirection: "column",
+                justifyContent: "center",
                 opacity: i === 0 ? 1 : 0, 
                 visibility: i === 0 ? "visible" : "hidden",
                 pointerEvents: i === 0 ? "auto" : "none" 
