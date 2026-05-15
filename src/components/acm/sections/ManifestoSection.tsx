@@ -1,7 +1,7 @@
 export default function ManifestoSection() {
   return (
-    <section id="manifesto">
-      <div className="container">
+    <section id="manifesto" className="relative overflow-hidden">
+      <div className="container relative z-10">
         <div className="manifesto-inner">
           <div className="manifesto-left">
             <span className="label reveal">Our Manifesto</span>

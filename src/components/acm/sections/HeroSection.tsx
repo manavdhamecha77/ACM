@@ -1,7 +1,12 @@
+"use client";
+
+import Magnetic from "@/components/ui/Magnetic";
+
 export default function HeroSection() {
   return (
     <section id="hero">
       <div className="hero-grid"></div>
+      
       <div className="hero-year">2026</div>
       <div className="hero-index reveal stagger-1">NIT Surat / Gujarat, India</div>
       <p className="hero-acm reveal stagger-2">Association for Computing Machinery — SVNIT Student Chapter</p>
@@ -17,7 +22,10 @@ export default function HeroSection() {
           Learning never exhausts the mind.
           <cite>— Leonardo Da Vinci</cite>
         </blockquote>
-        <span className="hero-scroll reveal stagger-5">Scroll to explore</span>
+        
+        <Magnetic strength={20}>
+          <span className="hero-scroll reveal stagger-5 cursor-pointer">Scroll to explore</span>
+        </Magnetic>
       </div>
     </section>
   );
