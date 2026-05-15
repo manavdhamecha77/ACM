@@ -22,7 +22,6 @@ export default function WhatWeDoSection() {
     // Set initial states
     gsap.set(cards, { 
       autoAlpha: 0, 
-      rotateY: 90, 
       zIndex: 1,
       transformPerspective: 2000,
     });
@@ -36,7 +35,7 @@ export default function WhatWeDoSection() {
       scrollTrigger: {
         trigger: triggerRef.current,
         start: "top top",
-        end: `+=${activities.length * 150}%`, // More scroll space for smoother transition
+        end: `+=${activities.length * 150}%`,
         scrub: 1,
         pin: true,
         anticipatePin: 1,
@@ -44,31 +43,49 @@ export default function WhatWeDoSection() {
       },
     });
 
-    // Sequence for Cube Rotation
+    // Sequence for Alternating Cube Rotation
     cards.forEach((card, i) => {
       if (i === 0) {
         tl.to({}, { duration: 0.5 }); // Initial pause
         return;
       }
 
-      // Rotate out previous card
-      tl.to(cards[i - 1], { 
-        rotateY: -90, 
-        autoAlpha: 0, 
-        transformOrigin: "center left",
-        duration: 1, 
-        ease: "power2.inOut",
-      });
-      
-      // Rotate in current card
-      tl.fromTo(card, 
-        { rotateY: 90, autoAlpha: 0, transformOrigin: "center right" },
-        { rotateY: 0, autoAlpha: 1, duration: 1, ease: "power2.inOut" },
-        "<" // Sync with previous card's rotation
-      );
+      const isVertical = i % 2 === 0;
+      const label = `step-${i}`;
 
-      // Brief pause on the current card
-      tl.to({}, { duration: 0.5 });
+      if (!isVertical) {
+        // Horizontal Rotation (Y-axis)
+        tl.to(cards[i - 1], { 
+          rotateY: -90, 
+          autoAlpha: 0, 
+          transformOrigin: "center right",
+          duration: 1, 
+          ease: "power2.inOut",
+        }, label);
+        
+        tl.fromTo(card, 
+          { rotateY: 90, autoAlpha: 0, transformOrigin: "center left" },
+          { rotateY: 0, autoAlpha: 1, duration: 1, ease: "power2.inOut" },
+          label
+        );
+      } else {
+        // Vertical Rotation (X-axis)
+        tl.to(cards[i - 1], { 
+          rotateX: 90, 
+          autoAlpha: 0, 
+          transformOrigin: "top center",
+          duration: 1, 
+          ease: "power2.inOut",
+        }, label);
+        
+        tl.fromTo(card, 
+          { rotateX: -90, autoAlpha: 0, transformOrigin: "bottom center" },
+          { rotateX: 0, autoAlpha: 1, duration: 1, ease: "power2.inOut" },
+          label
+        );
+      }
+
+      tl.to({}, { duration: 0.5 }); // pause
     });
 
     return () => {
@@ -86,7 +103,7 @@ export default function WhatWeDoSection() {
       >
         <div className="flex h-full w-full" style={{ display: "flex", height: "100%", width: "100%" }}>
           
-          {/* Left Side: Stacked Content (50%) - Cube Rotation - LEFT ALIGNED */}
+          {/* Left Side: Stacked Content (50%) - Alternating Cube Rotation */}
           <div className="bg-black" style={{ width: "50%", height: "100%", position: "relative", perspective: "2000px" }}>
             {activities.map((activity, i) => (
               <div 
@@ -128,7 +145,7 @@ export default function WhatWeDoSection() {
                       <span key={tag} className="tag" style={{ border: "1px solid rgba(255,255,255,0.2)", color: "rgba(255,255,255,0.6)", padding: "0.2rem 0.6rem", fontSize: "0.7rem", textTransform: "uppercase", letterSpacing: "0.1em" }}>{tag}</span>
                     ))}
                   </div>
-                  <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-[#FF2B2B] group-hover:border-[#FF2B2B] group-hover:text-white transition-all text-white" style={{ width: "3rem", height: "3rem" }}>
+                  <div className="w-12 h-12 rounded-full border border-black/10 flex items-center justify-center group-hover:bg-[#FF2B2B] group-hover:border-[#FF2B2B] group-hover:text-white transition-all text-white" style={{ width: "3rem", height: "3rem" }}>
                     <span>→</span>
                   </div>
                 </div>
