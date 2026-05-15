@@ -79,7 +79,7 @@ export default function BenefitsSection() {
           </div>
 
           {/* Bottom/Right Side: Stacked Content */}
-          <div className="benefits-right bg-white relative">
+          <div className="benefits-right relative" style={{ backgroundColor: "#fafafa" }}>
             {benefits.map((benefit, i) => (
               <div 
                 key={benefit.title}
